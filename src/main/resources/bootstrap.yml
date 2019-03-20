@@ -43,9 +43,9 @@ eureka:
     service-url:
       defaultZone: http://localhost:8762/eureka 
  
-#mybatis: 
-#  mapperLocations: classpath*:mapper/**/*Dao.xml
-#  executor-type: REUSE  
+mybatis: 
+  mapperLocations: classpath*:mapper/**/*Dao.xml
+  executor-type: REUSE  
 
 management:  
   security:  
