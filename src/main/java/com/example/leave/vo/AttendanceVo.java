@@ -33,5 +33,61 @@ public class AttendanceVo implements Serializable{
 	private String signTimeStart;
 	/** 对应字段：operateTimeForHis */
 	private String signTimeEnd;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getUserCode() {
+		return userCode;
+	}
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public String getProjectCode() {
+		return projectCode;
+	}
+	public void setProjectCode(String projectCode) {
+		this.projectCode = projectCode;
+	}
+	public String getProjectName() {
+		return projectName;
+	}
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+	public Date getSignDate() {
+		return signDate;
+	}
+	public void setSignDate(Date signDate) {
+		this.signDate = signDate;
+	}
+	public String getSignTimeStart() {
+		return signTimeStart;
+	}
+	public void setSignTimeStart(String signTimeStart) {
+		this.signTimeStart = signTimeStart;
+	}
+	public String getSignTimeEnd() {
+		return signTimeEnd;
+	}
+	public void setSignTimeEnd(String signTimeEnd) {
+		this.signTimeEnd = signTimeEnd;
+	}
+	
+	
 
 }

@@ -1,8 +1,8 @@
 package com.example.leave.dao;
 
-import org.apache.ibatis.annotations.Mapper;
+import com.example.leave.po.LeaveMain;
 
-@Mapper
 public interface LeaveMainDao {
-	
+	// 插入请假信息
+	public void insertLeaveMainInfo(LeaveMain leaveMain);
 }

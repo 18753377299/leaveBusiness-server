@@ -1,12 +1,12 @@
 package com.example.leave.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.example.leave.po.LeaveBasic;
 
-@Mapper
 public interface LeaveBasicDao {
 	
 	public LeaveBasic getLeaveBasicById(Integer id);
+	
+	// 查询请假基础表信息
+	public LeaveBasic selectLeaveBasicInfo(LeaveBasic  leaveBasic);
 	
 }
