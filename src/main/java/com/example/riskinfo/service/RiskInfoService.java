@@ -23,8 +23,8 @@ public class RiskInfoService {
 		try {
 			RiskInfoClaim riskInfoClaimNew =new RiskInfoClaim();
 			//进行字段的复制
-			BeanUtils.copyProperties(riskInfoClaimNew, riskClaimVo);
-			List<RiskInfoClaim> riskInfoClaimList = riskInfoClaimDao.queryRiskInfoClaim(riskInfoClaimNew);
+//			BeanUtils.copyProperties(riskInfoClaimNew, riskClaimVo);
+			List<RiskInfoClaim> riskInfoClaimList = riskInfoClaimDao.queryRiskInfoClaim(riskClaimVo);
 			for (RiskInfoClaim riskInfoClaim : riskInfoClaimList) {
 				System.out.println(riskInfoClaim.getSerialNo() + ":" + riskInfoClaim.getInsertTimeForHis());
 			}

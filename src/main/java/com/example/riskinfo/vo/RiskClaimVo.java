@@ -12,20 +12,20 @@ public class RiskClaimVo{
 	private String riskCname;
 	//出险年度
 	private String claimYear;
-	//险种
-	private String riskNames;
 	//最低赔款金额
 	private BigDecimal claimAmountLow;
 	//最高赔款金额
 	private BigDecimal claimAmountHigh;
+	//险种
+	private String [] riskNames;
 	//行业
-	private String professions;
+	private String [] professions;
 	//案件来源
-	private String senders;
+	private String [] senders;
 	//出险原因
-	private String claimReasons;
+	private String [] claimReasons;
 	//审核状态
-	private String validStatus;
+	private String [] validStatus;
 	
 	
 }

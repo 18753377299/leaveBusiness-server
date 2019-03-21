@@ -36,12 +36,45 @@
 	<!-- 	查询的where部分 -->
 	<sql id="Base_select_By_Entity">
 		<if test="claimName !=null and claimName!=''">
-<!-- 			and  claimName like CONCAT ('%',#{claimName,jdbcType=VARCHAR},'%') -->
-			and  claimName like "%"#{claimName,jdbcType=VARCHAR}"%"
+			and  claimName like CONCAT ('%',#{claimName,jdbcType=VARCHAR},'%')
+<!-- 			and  claimName like "%"#{claimName,jdbcType=VARCHAR}"%" -->
 		</if>
+		<if test="riskCname !=null and riskCname !=''">
+			and  riskCname like CONCAT ('%',#{riskCname,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="claimYear !=null and claimYear !=''">
+			and  claimYear = #{claimYear}
+		</if>
+<!-- 		通过length来判断数组非空 -->
+		<if test="riskNames !=null and riskNames.length >0">
+			and  riskName in 
+			<foreach collection="riskNames" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="professions !=null and professions.length >0">
+			and  PROFESSION in 
+			<foreach collection="professions" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="senders !=null and senders.length >0">
+			and  SENDER in 
+			<foreach collection="senders" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="claimReasons !=null and claimReasons.length >0">
+			and  CLAIMREASON in 
+			<foreach collection="claimReasons" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		
 	</sql>
 	
-	<select id="queryRiskInfoClaim" resultType="com.example.riskinfo.po.RiskInfoClaim" parameterType="">
+	<select id="queryRiskInfoClaim" resultType="com.example.riskinfo.po.RiskInfoClaim">
+<!-- 	 parameterType="" -->
 		select * from  riskinfo_claim 
 		<where>
 			<include refid="Base_select_By_Entity"/>
