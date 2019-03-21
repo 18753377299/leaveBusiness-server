@@ -45,7 +45,14 @@
 		<if test="claimYear !=null and claimYear !=''">
 			and  claimYear = #{claimYear}
 		</if>
-<!-- 		通过length来判断数组非空 -->
+		<if test="claimAmountLow !=null and claimAmountLow !='' and 
+				claimAmountHigh !=null and claimAmountHigh !=''">
+			and  CLAIMAMOUNT &gt;= #{claimAmountLow}
+		</if>
+		<if test="claimAmountHigh !=null and claimAmountHigh !=''">
+			and  CLAIMAMOUNT &lt;= #{claimAmountHigh}
+		</if>
+		<!--通过length来判断数组非空 -->
 		<if test="riskNames !=null and riskNames.length >0">
 			and  riskName in 
 			<foreach collection="riskNames" index="index" item="item" open="(" separator="," close=")">
