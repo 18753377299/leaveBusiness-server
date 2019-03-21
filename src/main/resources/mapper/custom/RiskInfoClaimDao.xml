@@ -3,9 +3,49 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.riskinfo.dao.RiskInfoClaimDao">
+	<!-- 通用查询结果对象-->
+	<resultMap id="RiskInfoClaimResultMap"  type="com.example.riskinfo.po.RiskInfoClaim">
+		<id column="serialno" property="serialNo" />
+		<result column="comcode" property="comCode" />
+<!-- 		<result column="operatorcode" property="comCodeCName" /> -->
+		<result column="operatorcode" property="operatorCode" />
+		<result column="operatorname" property="operatorName"/>
+		<result column="claimname" property="claimName" />
+		<result column="riskname" property="riskName" />
+		<result column="riskcname" property="riskCname" />
+		<result column="claimreason" property="claimReason" />
+		<result column="profession" property="profession"/>
+		<result column="claimamount" property="claimAmount" />
+		<result column="claimyear" property="claimYear" />
+		<result column="sender" property="sender"/>
+		<result column="url" property="url"/>
+<!-- 		<result column="" property="riskNameC" /> -->
+		<result column="remark" property="remark" />
+		<result column="validstatus" property="validStatus" />
+<!-- 		<result column="" property="validStatusName" /> -->
+		<result column="inserttimeforhis" property="insertTimeForHis" />
+		<result column="operatetimeforhis" property="operateTimeForHis" />
+	</resultMap>
 	
-	<select id="queryRiskInfoClaim" resultType="com.example.riskinfo.po.RiskInfoClaim">
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 serialNo, comCode, operatorCode, operatorName, claimName,
+		 riskName, riskCname, claimReason, profession, claimAmount,
+		 claimYear, sender, url,remark,validStatus,insertTimeForHis,operateTimeForHis
+	</sql>
+	<!-- 	查询的where部分 -->
+	<sql id="Base_select_By_Entity">
+		<if test="claimName !=null and claimName!=''">
+<!-- 			and  claimName like CONCAT ('%',#{claimName,jdbcType=VARCHAR},'%') -->
+			and  claimName like "%"#{claimName,jdbcType=VARCHAR}"%"
+		</if>
+	</sql>
+	
+	<select id="queryRiskInfoClaim" resultType="com.example.riskinfo.po.RiskInfoClaim" parameterType="">
 		select * from  riskinfo_claim 
+		<where>
+			<include refid="Base_select_By_Entity"/>
+		</where>
 	</select>
 	
 </mapper>

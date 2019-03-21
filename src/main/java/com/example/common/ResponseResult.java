@@ -1,5 +1,7 @@
 package com.example.common;
 
+import java.util.Map;
+
 import lombok.Data;
 
 @Data
@@ -11,5 +13,7 @@ public class ResponseResult {
 	private String  status;
 	// 返回的信息
 	private String message;
+	// 存储键值对信息
+	private Map<String,Object> parameterMap;
 	
-}
+ }

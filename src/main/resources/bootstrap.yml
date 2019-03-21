@@ -45,7 +45,16 @@ eureka:
  
 mybatis: 
   mapperLocations: classpath*:mapper/**/*Dao.xml
-  executor-type: REUSE  
+  executor-type: REUSE 
+#  日志平台输出（方便查看输出sql语句）
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl 
+
+#logging:
+#  config: classpath:logback-${spring.profiles.active}.xml 
+#  level:
+#    ins.platform.leave: trace
+
 
 management:  
   security:  
