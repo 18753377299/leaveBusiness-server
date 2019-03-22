@@ -57,8 +57,9 @@
 	
 	<!--查询风控巡检信息 -->
 	<select id="queryRiskCheckMain" resultType="com.example.riskinfo.po.RiskCheckMain">
-		select  main.*,assess.* from riskcheck_main  main,riskcheck_assess assess 
-		where main.riskcheckno = assess.riskcheckno
+<!-- 		select  main.*,assess.* from riskcheck_main  main,riskcheck_assess assess  -->
+<!-- 		where main.riskcheckno = assess.riskcheckno -->
+			select * from riskcheck_main
 	</select>
 	
 	
