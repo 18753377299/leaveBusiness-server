@@ -5,6 +5,10 @@ import lombok.Data;
 @Data
 public class RiskInfoClaimRequestVo {
 	// 查询的实体类
-	private RiskClaimVo riskClaimVo;
+	private RiskClaimVo riskInfoClaimVo;
+	
+	private Integer pageNo;
+	
+	private Integer pageSize;
 	
 }

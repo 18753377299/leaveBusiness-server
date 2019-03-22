@@ -2,14 +2,13 @@ package com.example.riskinfo.service;
 
 import java.util.List;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.common.ResponseResult;
 import com.example.riskinfo.dao.RiskInfoClaimDao;
 import com.example.riskinfo.po.RiskInfoClaim;
-import com.example.riskinfo.vo.RiskClaimVo;
+import com.example.riskinfo.vo.RiskInfoClaimRequestVo;
 
 @Service
 public class RiskInfoService {
@@ -17,21 +16,36 @@ public class RiskInfoService {
 	@Autowired
 	RiskInfoClaimDao riskInfoClaimDao;
 	
-	public  ResponseResult queryRiskInfoClaim(RiskClaimVo riskClaimVo) {
+	public  ResponseResult queryRiskInfoClaim(RiskInfoClaimRequestVo riskInfoClaimRequestVo) {
 		ResponseResult responseResult =new ResponseResult();
 		
 		try {
-			RiskInfoClaim riskInfoClaimNew =new RiskInfoClaim();
+//			RiskInfoClaim riskInfoClaimNew =new RiskInfoClaim();
+//			RiskClaimVo riskClaimVo = riskInfoClaimRequestVo.getRiskInfoClaimVo();
 			//进行字段的复制
 //			BeanUtils.copyProperties(riskInfoClaimNew, riskClaimVo);
-			List<RiskInfoClaim> riskInfoClaimList = riskInfoClaimDao.queryRiskInfoClaim(riskClaimVo);
-			for (RiskInfoClaim riskInfoClaim : riskInfoClaimList) {
-				System.out.println(riskInfoClaim.getSerialNo() + ":" + riskInfoClaim.getInsertTimeForHis());
-			}
+			//通过分页查询出典型案例信息
+			List<RiskInfoClaim> riskInfoClaimList = riskInfoClaimDao.queryRiskInfoClaim(riskInfoClaimRequestVo);
+			// 查询出典型案例信息的总数
+			Integer totalCount = riskInfoClaimDao.queryCountRiskInfoClaim(riskInfoClaimRequestVo);
+			responseResult.setTotalCount(totalCount);
 			responseResult.setResult(riskInfoClaimList);
+			responseResult.setStatus("1");
+			responseResult.setMessage("查询典型案例成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
+			responseResult.setStatus("2");
+			responseResult.setMessage("查询典型案例失败！");
 		}
+		return responseResult;
+	}
+	
+	/**
+	 * 风控巡检信息查询
+	 * */
+	public ResponseResult queryRiskCheckMain() {
+		ResponseResult responseResult =new ResponseResult();
+		
 		return responseResult;
 	}
 }

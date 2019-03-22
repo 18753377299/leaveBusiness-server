@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.riskinfo.dao.RiskInfoClaimDao">
+	<!-- 通用查询结果对象-->
+	<resultMap id="RiskInfoClaimResultMap"  type="com.example.riskinfo.po.RiskInfoClaim">
+		<id column="serialno" property="serialNo" />
+		<result column="comcode" property="comCode" />
+<!-- 		<result column="operatorcode" property="comCodeCName" /> -->
+		<result column="operatorcode" property="operatorCode" />
+		<result column="operatorname" property="operatorName"/>
+		<result column="claimname" property="claimName" />
+		<result column="riskname" property="riskName" />
+		<result column="riskcname" property="riskCname" />
+		<result column="claimreason" property="claimReason" />
+		<result column="profession" property="profession"/>
+		<result column="claimamount" property="claimAmount" />
+		<result column="claimyear" property="claimYear" />
+		<result column="sender" property="sender"/>
+		<result column="url" property="url"/>
+<!-- 		<result column="" property="riskNameC" /> -->
+		<result column="remark" property="remark" />
+		<result column="validstatus" property="validStatus" />
+<!-- 		<result column="" property="validStatusName" /> -->
+		<result column="inserttimeforhis" property="insertTimeForHis" />
+		<result column="operatetimeforhis" property="operateTimeForHis" />
+	</resultMap>
+	
+	
+</mapper>

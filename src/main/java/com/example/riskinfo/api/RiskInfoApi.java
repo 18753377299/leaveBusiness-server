@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.common.ResponseResult;
 import com.example.riskinfo.service.RiskInfoService;
-import com.example.riskinfo.vo.RiskClaimVo;
+import com.example.riskinfo.vo.RiskInfoClaimRequestVo;
 
 @RestController
 @RequestMapping(value="/riskinfo-api")
@@ -22,10 +22,21 @@ public class RiskInfoApi {
 	 * */
 	
 	@RequestMapping(value="/queryRiskInfoClaim",method={RequestMethod.GET,RequestMethod.POST})
-	public ResponseResult queryRiskInfoClaim(@RequestBody RiskClaimVo riskClaimVo) {
+	public ResponseResult queryRiskInfoClaim(@RequestBody RiskInfoClaimRequestVo riskInfoClaimRequestVo) {
 		ResponseResult responseResult =new ResponseResult();
 		System.out.println("success");
-		responseResult =  riskInfoService.queryRiskInfoClaim(riskClaimVo);
+		responseResult =  riskInfoService.queryRiskInfoClaim(riskInfoClaimRequestVo);
+		return responseResult;
+	}
+	
+	/**
+	 * 查询风控巡检信息
+	 * */
+	@RequestMapping(value="/queryRiskCheckMain",method={RequestMethod.GET,RequestMethod.POST})
+	public ResponseResult queryRiskCheckMain(@RequestBody RiskInfoClaimRequestVo riskInfoClaimRequestVo) {
+		ResponseResult responseResult =new ResponseResult();
+		System.out.println("success");
+		responseResult =  riskInfoService.queryRiskCheckMain();
 		return responseResult;
 	}
 	

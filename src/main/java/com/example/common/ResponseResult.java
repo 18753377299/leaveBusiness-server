@@ -15,5 +15,6 @@ public class ResponseResult {
 	private String message;
 	// 存储键值对信息
 	private Map<String,Object> parameterMap;
-	
+	// 返回分页总条数
+	private long totalCount;
  }

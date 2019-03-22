@@ -28,4 +28,6 @@ public class RiskClaimVo{
 	private String [] validStatus;
 	
 	
+	
+	
 }
