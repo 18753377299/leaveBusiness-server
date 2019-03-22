@@ -33,9 +33,11 @@ public class RiskInfoApi {
 	 * 查询风控巡检信息
 	 * */
 	@RequestMapping(value="/queryRiskCheckMain",method={RequestMethod.GET,RequestMethod.POST})
-	public ResponseResult queryRiskCheckMain(@RequestBody RiskInfoClaimRequestVo riskInfoClaimRequestVo) {
+	public ResponseResult queryRiskCheckMain() {
+//		@RequestBody RiskInfoClaimRequestVo riskInfoClaimRequestVo
+		
 		ResponseResult responseResult =new ResponseResult();
-		System.out.println("success");
+		System.out.println("queryRiskCheckMain");
 		responseResult =  riskInfoService.queryRiskCheckMain();
 		return responseResult;
 	}

@@ -2,30 +2,64 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.riskinfo.dao.RiskInfoClaimDao">
+<mapper namespace="com.example.riskinfo.dao.RiskCheckMainDao">
 	<!-- 通用查询结果对象-->
-	<resultMap id="RiskInfoClaimResultMap"  type="com.example.riskinfo.po.RiskInfoClaim">
-		<id column="serialno" property="serialNo" />
+	<resultMap id="RiskCheckMainResultMap"  type="com.example.riskinfo.po.RiskCheckMain">
+		<id column="riskcheckno" property="riskCheckNo" />
 		<result column="comcode" property="comCode" />
-<!-- 		<result column="operatorcode" property="comCodeCName" /> -->
+		<result column="checkmodel" property="checkModel"/>
+		<result column="insuredtype" property="insuredType"/>
+		<result column="insuredcode" property="insuredCode"/>
+		<result column="insuredname" property="insuredName"/>
+		<result column="addressdetail" property="addressDetail"/>
+		<result column="addresscode" property="addressCode" />
+		<result column="addressprovince" property="addressProvince" />
+		<result column="addresscity" property="addressCity" />
+		<result column="addresscounty" property="addressCounty" />
+		<result column="businesssource" property="businessSource" />
+		<result column="businessclass" property="businessClass"/>
+		<result column="unitnature" property="unitNature"/>
 		<result column="operatorcode" property="operatorCode" />
-		<result column="operatorname" property="operatorName"/>
-		<result column="claimname" property="claimName" />
-		<result column="riskname" property="riskName" />
-		<result column="riskcname" property="riskCname" />
-		<result column="claimreason" property="claimReason" />
-		<result column="profession" property="profession"/>
-		<result column="claimamount" property="claimAmount" />
-		<result column="claimyear" property="claimYear" />
-		<result column="sender" property="sender"/>
-		<result column="url" property="url"/>
-<!-- 		<result column="" property="riskNameC" /> -->
-		<result column="remark" property="remark" />
-		<result column="validstatus" property="validStatus" />
-<!-- 		<result column="" property="validStatusName" /> -->
+		<result column="operatorcode_uni" property="operatorCodeUni" />
+		<result column="undwrtsubmitdate" property="undwrtsubmitDate" />
+		<result column="underwriteflag" property="underwriteFlag"/>
+		<result column="underwritedate" property="underwriteDate"/>
+		<result column="underwritecode" property="underwriteCode"/>
+		<result column="underwritename" property="underwriteName"/>
+		<result column="checkcomcode" property="checkComCode"/>
+		<result column="checker" property="checker" />
+		<result column="checkdate" property="checkDate" />
+		<result column="madedate" property="madeDate" />
+		<result column="mobileflag" property="mobileFlag"/>
+		<result column="highlightrisk" property="highlightRisk"/>
+		<result column="score" property="score"/>
+		<result column="executionid" property="executionId" />
+		<result column="repulsesugggest" property="repulseSugggest" />
+		<result column="pointx_2000" property="pointx2000"/>
+		<result column="pointy_2000" property="pointy2000"/>
+		<result column="pointx_02" property="pointx02" />
+		<result column="pointy_02" property="pointy02" />
 		<result column="inserttimeforhis" property="insertTimeForHis" />
-		<result column="operatetimeforhis" property="operateTimeForHis" />
+		<result column="operatetimeforhis" property="operateTimeForHis"/>
+		
+		<collection property="riskCheckAssessList" ofType="com.example.riskinfo.po.RiskCheckAssess">
+			<id column="riskcheckno" property="riskCheckNo"/>
+			<result column="envdanger" property="envDanger" />
+			<result column="impdanger" property="impDanger" />
+			<result column="builddanger" property="buildDanger"/>
+			<result column="cargodanger" property="cargoDanger"/>
+			<result column="typdanger" property="typDanger"/>
+			<result column="flooddanger" property="floodDanger" />
+			<result column="inserttimeforhis" property="insertTimeForHis"/>
+			<result column="operatetimeforhis" property="operateTimeForHis"/>
+		</collection>
 	</resultMap>
+	
+	<!--查询风控巡检信息 -->
+	<select id="queryRiskCheckMain" resultType="com.example.riskinfo.po.RiskCheckMain">
+		select  main.*,assess.* from riskcheck_main  main,riskcheck_assess assess 
+		where main.riskcheckno = assess.riskcheckno
+	</select>
 	
 	
 </mapper>

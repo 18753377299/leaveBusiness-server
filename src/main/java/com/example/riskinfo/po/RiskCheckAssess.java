@@ -17,6 +17,7 @@ public class RiskCheckAssess {
     private BigDecimal floodDanger;
     private Date insertTimeForHis;
     private Date operateTimeForHis;
+    
 	private RiskCheckMain riskCheckMain;
 	
 	

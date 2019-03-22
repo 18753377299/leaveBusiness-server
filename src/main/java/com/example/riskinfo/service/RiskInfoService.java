@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.common.ResponseResult;
+import com.example.riskinfo.dao.RiskCheckMainDao;
 import com.example.riskinfo.dao.RiskInfoClaimDao;
+import com.example.riskinfo.po.RiskCheckMain;
 import com.example.riskinfo.po.RiskInfoClaim;
 import com.example.riskinfo.vo.RiskInfoClaimRequestVo;
 
@@ -15,6 +17,9 @@ public class RiskInfoService {
 	
 	@Autowired
 	RiskInfoClaimDao riskInfoClaimDao;
+	
+	@Autowired
+	RiskCheckMainDao riskCheckMainDao;
 	
 	public  ResponseResult queryRiskInfoClaim(RiskInfoClaimRequestVo riskInfoClaimRequestVo) {
 		ResponseResult responseResult =new ResponseResult();
@@ -45,7 +50,11 @@ public class RiskInfoService {
 	 * */
 	public ResponseResult queryRiskCheckMain() {
 		ResponseResult responseResult =new ResponseResult();
-		
+		List<RiskCheckMain> riskCheckMains = riskCheckMainDao.queryRiskCheckMain();
+		for(RiskCheckMain main:riskCheckMains) {
+			System.out.println(main.getRiskCheckNo()+":"+main.getAddressDetail());
+		}
+		responseResult.setResult(riskCheckMains);
 		return responseResult;
 	}
 }
