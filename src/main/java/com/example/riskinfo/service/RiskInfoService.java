@@ -57,4 +57,7 @@ public class RiskInfoService {
 		responseResult.setResult(riskCheckMains);
 		return responseResult;
 	}
+	
+	
+	
 }

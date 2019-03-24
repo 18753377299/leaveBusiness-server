@@ -25,8 +25,8 @@ public class RiskCheckVenture {
     private String constructBuild;
     private String airStorageFlag;
     private String buildYears;
-    private String doorFlag;
     private String staggeredFlag;
+    private String doorFlag;
     private String drainageMethod;
     private String drainageBlock;
     private String dredgeCondition;

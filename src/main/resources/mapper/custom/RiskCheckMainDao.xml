@@ -53,13 +53,69 @@
 			<result column="inserttimeforhis" property="insertTimeForHis"/>
 			<result column="operatetimeforhis" property="operateTimeForHis"/>
 		</collection>
+		
+		<collection property="riskCheckImageList" ofType="com.example.riskinfo.po.RiskCheckImage">
+			<id column="id" property="id"/>
+			<result column="riskCheckNo" property="riskCheckNo" />
+			<result column="imagtype" property="imagType" />
+			<result column="imagtypecname" property="imagTypeCName"/>
+			<result column="imageid" property="imageId"/>
+			<result column="imagename" property="imageName"/>
+			<result column="imageurl" property="imageUrl" />
+			<result column="remark" property="remark" />
+			<result column="insertTimeForHis" property="insertTimeForHis"/>
+			<result column="operateTimeForHis" property="operateTimeForHis"/>
+		</collection>
+		
+		<collection property="riskCheckVentureList" ofType="com.example.riskinfo.po.RiskCheckVenture">
+			<id column="riskCheckNo" property="riskCheckNo"/>
+<!-- 			<result column="envdanger" property="characteristics" /> -->
+			<result column="impdanger" property="rainRecord" />
+			<result column="itemDistance" property="itemDistance"/>
+			<result column="comparedDegree" property="comparedDegree"/>
+			<result column="comparedTerrain" property="comparedTerrain"/>
+			<result column="itemEnvironment" property="itemEnvironment" />
+			<result column="LargeProjects" property="largeProjects" />
+			<result column="LargeProImpact" property="largeProImpact" />
+			<result column="waterSensitivity" property="waterSensitivity"/>
+			<result column="underAssetsFlag" property="underAssetsFlag"/>
+			<result column="HistoricWater" property="historicWater"/>
+			<result column="ManSituation" property="manSituation" />
+			<result column="lowEquipment" property="lowEquipment" />
+			<result column="ownership" property="ownership" />
+			<result column="constructBuild" property="constructBuild"/>
+			<result column="airStorageFlag" property="airStorageFlag"/>
+			<result column="BuildYears" property="buildYears"/>
+			<result column="DoorFlag" property="doorFlag" />
+			<result column="staggeredFlag" property="staggeredFlag" />
+			<result column="drainageMethod" property="drainageMethod" />
+			<result column="drainageBlock" property="drainageBlock" />
+<!-- 			<result column="builddanger" property="dredgeCondition"/> -->
+			<result column="connectedFlag" property="connectedFlag"/>
+			<result column="UnobstructedFlag" property="unobstructedFlag"/>
+			<result column="HaveCanal" property="haveCanal" />
+			<result column="cargoWaterSen" property="cargoWaterSen" />
+			<result column="StoForm" property="stoForm" />
+			<result column="StoLocation" property="stoLocation"/>
+			<result column="EmiForm" property="emiForm"/>
+			<result column="ConMaterials" property="conMaterials"/>
+			<result column="DraEquipment" property="draEquipment" />
+			<result column="ConPlan" property="conPlan" />
+			<result column="dutyFlag" property="dutyFlag" />
+			<result column="MonitorFlag" property="monitorFlag"/>
+			<result column="transferFlag" property="transferFlag"/>
+			<result column="insertTimeForHis" property="insertTimeForHis"/>
+			<result column="operateTimeForHis" property="operateTimeForHis"/>
+		</collection>
+		
 	</resultMap>
 	
 	<!--查询风控巡检信息 -->
-	<select id="queryRiskCheckMain" resultType="com.example.riskinfo.po.RiskCheckMain">
-<!-- 		select  main.*,assess.* from riskcheck_main  main,riskcheck_assess assess  -->
-<!-- 		where main.riskcheckno = assess.riskcheckno -->
-			select * from riskcheck_main
+	<select id="queryRiskCheckMain" resultMap="RiskCheckMainResultMap">
+		select  main.*,assess.* from riskcheck_main  main,riskcheck_assess assess ,
+		riskcheck_image image,riskcheck_venture venture 
+		where main.riskcheckno = assess.riskcheckno and main.riskcheckno=image.riskCheckNo
+		and main.riskcheckno= venture.riskCheckNo
 	</select>
 	
 	
