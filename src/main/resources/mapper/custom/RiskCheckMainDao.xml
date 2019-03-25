@@ -109,14 +109,34 @@
 		</collection>
 		
 	</resultMap>
-	
+	<!-- 风控巡检查询查询条件拼写 -->
+	<sql id="queryRiskCheckMainSql">
+		main.riskcheckno = assess.riskcheckno and main.riskcheckno=image.riskCheckNo
+					and main.riskcheckno= venture.riskCheckNo
+<!-- 		<if test=""> -->
+<!-- 		</if> -->
+	</sql>
 	<!--查询风控巡检信息 -->
 	<select id="queryRiskCheckMain" resultMap="RiskCheckMainResultMap">
-		select  main.*,assess.* from riskcheck_main  main,riskcheck_assess assess ,
-		riskcheck_image image,riskcheck_venture venture 
-		where main.riskcheckno = assess.riskcheckno and main.riskcheckno=image.riskCheckNo
-		and main.riskcheckno= venture.riskCheckNo
+		select  main.*,assess.*,image.*,venture.* from riskcheck_main  main,riskcheck_assess assess ,
+ 		riskcheck_image image,riskcheck_venture venture  
+			
+<!-- 		select * from riskcheck_main -->
+		<where>
+			<include refid="queryRiskCheckMainSql"/>
+		</where>
 	</select>
+	
+	<select id="queryRiskCheckMainCount" parameterType="Integer">
+		select count(*) from riskcheck_main  main,riskcheck_assess assess ,
+ 		riskcheck_image image,riskcheck_venture venture 
+<!-- 		select count(*) from riskcheck_main -->
+		<where>
+			<include refid="queryRiskCheckMainSql"/>
+		</where>
+	</select>
+	
+<!-- 	<insert id=""></insert> -->
 	
 	
 </mapper>

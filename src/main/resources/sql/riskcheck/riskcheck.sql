@@ -75,6 +75,8 @@ CREATE TABLE RiskCheck_image
 	primary key (id) 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO riskcheck_image (id, riskCheckNo, imagtype, imagtypecname, imageid, imagename, imageurl, remark, insertTimeForHis, operateTimeForHis) VALUES (244, 'RX00200000000201900059', '2.4', '2.4.1.jpg', '', '2.4.1.jpg', '/riskcontrol_file/RX00100000000201900086/2.4/2.4.1.jpg?uuid=2fe64913-67bb-4da8-91e7-64a96eaefc9d', '', null, null);
+
 
 CREATE TABLE RiskCheck_venture
 (
@@ -116,3 +118,5 @@ CREATE TABLE RiskCheck_venture
 	operateTimeForHis	datetime NULL DEFAULT NOW(),	--**更新时间
 	primary key (riskCheckNo)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO RiskCheck_venture (riskCheckNo, Rainrecord, itemDistance, comparedDegree, comparedTerrain, itemEnvironment, LargeProjects, LargeProImpact, waterSensitivity, underAssetsFlag, HistoricWater, ManSituation, lowEquipment, ownership, constructBuild, airStorageFlag, BuildYears, DoorFlag, staggeredFlag, drainageMethod, drainageBlock, connectedFlag, UnobstructedFlag, HaveCanal, cargoWaterSen, StoForm, StoLocation, EmiForm, ConMaterials, DraEquipment, ConPlan, dutyFlag, MonitorFlag, transferFlag, insertTimeForHis, operateTimeForHis) VALUES ('RX00200000000201900059', 'A', 'B', 'A', 'C', 'A', 'A', 'B', 'B', 'A', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'A', 'B', 'B', 'A', 'B', '', 'B', 'A', 'B', '2019-03-25 09:48:09', null);
