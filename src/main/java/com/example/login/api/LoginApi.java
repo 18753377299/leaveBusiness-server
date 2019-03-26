@@ -31,14 +31,14 @@ public class LoginApi {
 		
 		if(isSuccess) {
 			responseResult.setMessage("登陆成功！");
-			responseResult.setStatus("1");
+			responseResult.setStatusCode("1");
 			/**如果登陆成功,则将获取token数据，并返回到前台*/
 			String token =  this.getTokenByData(user.getUsername());
 			map.put("token", token);
 			responseResult.setParameterMap(map);
 		}else {
 			responseResult.setMessage("用户名或密码错误，请检查后重新登陆！");
-			responseResult.setStatus("2");
+			responseResult.setStatusCode("2");
 		}
 		
 		

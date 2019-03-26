@@ -10,7 +10,7 @@ public class ResponseResult {
 	// 返回结果信息
 	private Object result;
 	// 状态标志位
-	private String  status;
+	private String  statusCode;
 	// 返回的信息
 	private String message;
 	// 存储键值对信息
