@@ -21,7 +21,11 @@ public class LoginApi {
 	
 	@Autowired 
 	LoginService loginService;
-	
+	/**
+	 * @description  用户登录
+	 * @Author  liqiankun
+	 * @Date 20190326 
+	 * */
 	@RequestMapping(value="/getInfoLogin",method= {RequestMethod.POST,RequestMethod.GET})
 	public ResponseResult getInfoLogin(@RequestBody User user) {
 		ResponseResult responseResult =new ResponseResult();
@@ -40,7 +44,6 @@ public class LoginApi {
 			responseResult.setMessage("用户名或密码错误，请检查后重新登陆！");
 			responseResult.setStatusCode("2");
 		}
-		
 		
 		return responseResult;
 	}

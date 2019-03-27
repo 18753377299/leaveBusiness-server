@@ -36,11 +36,11 @@ public class RiskInfoService {
 			Integer totalCount = riskInfoClaimDao.queryCountRiskInfoClaim(riskInfoClaimRequestVo);
 			responseResult.setTotalCount(totalCount);
 			responseResult.setResult(riskInfoClaimList);
-			responseResult.setStatus("1");
+			responseResult.setStatusCode("1");
 			responseResult.setMessage("查询典型案例成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
-			responseResult.setStatus("2");
+			responseResult.setStatusCode("2");
 			responseResult.setMessage("查询典型案例失败！");
 		}
 		return responseResult;
